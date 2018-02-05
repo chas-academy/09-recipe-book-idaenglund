@@ -28,4 +28,5 @@ export class RecipeListComponent implements OnInit {
        this.recipeItemSelected.emit(something); 
 
    }
+
 }

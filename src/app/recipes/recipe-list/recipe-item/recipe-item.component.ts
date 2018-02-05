@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Recipe} from '../../recipe.model'; 
+import { Recipe } from '../../recipe.model'; 
 
 
 
@@ -15,6 +15,10 @@ export class RecipeItemComponent implements OnInit{
       
   }
    ngOnInit() {
+
+    // Ta koden från MASHUP - projektet 
+    // Make an API-call to any food API
+    // Populate the recipes array with items from that response 
        console.log("This is a recipe Itemlist", this.recipe); 
    } 
 
