@@ -1,12 +1,16 @@
-<div class="wrapper">
+
 <input [(ngModel)]="query" type="text" (keyup)="onKeyUp($event)" class="inputText">
-<ul>
-    <li
-     *ngFor="let recipe of recipes" (click)="onRecipeSelected(recipe)">
-     <a routerLink="recipe/{{recipe.id}}">
-    {{recipe.title}}
-    <img [src]="recipe.photoPath"/>
-    </a>
-    </li>
-</ul>
-</div>
+<div  *ngFor="let recipe of recipes" (click)="onRecipeSelected(recipe)" class="row">
+        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+            <a routerLink="recipe/{{recipe.id}}"class="card clickable">
+                <div class="card-img">
+                    <img [src]="recipe.photoPath">
+                </div>
+                <div class="card-block">
+                    <p class="card-text">
+                            {{recipe.title}}
+                    </p>
+                </div>
+            </a>
+        </div>
+    </div>
