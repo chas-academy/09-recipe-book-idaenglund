@@ -1,5 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Observable } from 'rxjs/Observable'; 
 import { Recipe } from '../recipe.model'; 
+import { RecipeService } from '../../recipe.service';
+import { ActivatedRoute, ParamMap } from '@angular/router'; 
+
 
 
 @Component({
@@ -9,23 +13,26 @@ import { Recipe } from '../recipe.model';
 })
 
 export class RecipeListComponent implements OnInit {
-    recipes: Recipe[] = [
-        new Recipe ('Fidgey Pudding', 'Tasty pudding', 'https://placeholder.it/200x200'), 
-        new Recipe ('Burger', 'Best Vegan burger', 'https://placeholder.it/200x200'),
-        new Recipe ('Pizza', 'Woop Pizza', 'https://placeholder.it/200x200'),
-        new Recipe ('Tacos', 'Tacos with cilantro', 'https://placeholder.it/200x200')
-    ]; 
-
-    @Output() recipeItemSelected = new EventEmitter<Recipe>(); 
-
-  constructor() {}
+ selectedRecipe = Recipe; 
+ recipes: Recipe; 
+ 
+ private selectedId: number; 
+ 
+    constructor(
+    private service: RecipeService,
+    private route: ActivatedRoute 
+){}
    
   ngOnInit() {
-       console.log("This is a list of recipes"); 
+      this.getRecipes(); 
    } 
 
-   onRecipeSelected(something: Recipe){
-       this.recipeItemSelected.emit(something); 
+   getRecipes(): void {
+       this.service.getRecipes('tofu').then(response => console.log(response)); 
+   }
+
+   onRecipeSelected(recipe: Recipe){
+       //this.selectedRecipe = recipe; 
 
    }
 

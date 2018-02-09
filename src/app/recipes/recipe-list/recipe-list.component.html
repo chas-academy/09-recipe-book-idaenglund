@@ -1,9 +1,11 @@
 <ul>
-    <app-recipe-item
+    <li
      *ngFor="let recipe of recipes"
-     [recipe]= "recipe"
-     (recipeItem)="onRecipeSelected(recipe)"
+     (click)="onRecipeSelected(recipe)"
      >
-    
-    </app-recipe-item>
+     <a routerLink="recipe/{{recipe.id}}">
+    {{recipe.title}}
+    </a>
+    </li>
+
 </ul>

@@ -1,4 +1,4 @@
-<a href="#"(click)="onFlick(recipe)">
+<a [routerLink]="['/recipe', recipe.title]" RouterLinkActive="active" (click)="onFlick(recipe)">
     {{recipe.title}} 
 </a>
 
