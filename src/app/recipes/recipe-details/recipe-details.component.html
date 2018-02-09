@@ -1,18 +1,13 @@
 <div *ngIf="recipe">
   <img [src]="recipe.photoPath"/>
-  <p>{{recipe.title}}</p>
+  <h1>{{recipe.title}}</h1>
 
-</div>
-<div *ngIf="recipe">
   <ul>
-    <li>{{recipe.healthLabels}}</li>
+    <li *ngFor="let ingredient of recipe.ingredients" class="ingredients">{{ingredient}}</li>
+    <span></span>
+    <li class="sort">{{recipe.healthLabels}}</li>
   </ul>
-</div>
 
-<div *ngIf="recipe">
-  <ul>
-    <li>{{recipe.ingredients}}</li>
-  </ul>
 </div>
 
 <!--Show loading if no recipe -->

@@ -13,8 +13,9 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 })
 
 export class RecipeListComponent implements OnInit {
- selectedRecipe = Recipe; 
+ selectedRecipe: Recipe; 
  recipes: Recipe[]; 
+ query: string; 
 
  
     constructor(
@@ -28,7 +29,7 @@ export class RecipeListComponent implements OnInit {
 
    getRecipes(): void {
        const that = this; 
-       this.service.getRecipes('tofu').then((recipes: Recipe[]) => {
+       this.service.getRecipes(this.query).then((recipes: Recipe[]) => {
             return that.recipes = recipes; 
        }); 
    }
@@ -36,6 +37,13 @@ export class RecipeListComponent implements OnInit {
    onRecipeSelected(recipe: Recipe){
        this.selectedRecipe = recipe; 
 
+   }
+
+   onKeyUp(event) {
+       if(event.keyCode === 13){
+           this.getRecipes(); 
+       }
+       
    }
 
 }

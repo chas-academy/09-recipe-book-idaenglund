@@ -10,6 +10,7 @@ import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component
 import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-item.component'; 
 import { SavedComponent } from './saved/saved.component';
 import { RecipeDetailsComponent } from './recipes/recipe-details/recipe-details.component';
+import { FormsModule } from '@angular/forms';
 //Service
 import { RecipeService } from './recipe.service'; 
 
@@ -34,6 +35,7 @@ const routes : Routes = [
     SavedComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     RouterModule.forRoot(
       routes, 

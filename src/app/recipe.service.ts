@@ -31,7 +31,7 @@ export class RecipeService {
             item.recipe.url, 
             item.recipe.label, 
             item.recipe.image, 
-            item.recipe.ingredientsLines, 
+            item.recipe.ingredientLines, 
             item.recipe.healthLabels)); 
  
         }); 
@@ -50,12 +50,13 @@ export class RecipeService {
         fetch(`https://api.edamam.com/search?r=${recipeId}&app_id=${APPID}&app_key=${APPKEY}`)
         .then(res => res.json())
         .then(res=> {
+          console.log(res)
           recipe = new Recipe(
             res[0].uri,
             res[0].url, 
             res[0].label, 
             res[0].image, 
-            res[0].ingredientsLines, 
+            res[0].ingredientLines, 
             res[0].healthLabels);
             resolve(recipe);
         });

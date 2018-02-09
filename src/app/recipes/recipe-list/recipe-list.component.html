@@ -1,3 +1,5 @@
+<div class="wrapper">
+<input [(ngModel)]="query" type="text" (keyup)="onKeyUp($event)" class="inputText">
 <ul>
     <li
      *ngFor="let recipe of recipes" (click)="onRecipeSelected(recipe)">
@@ -6,5 +8,5 @@
     <img [src]="recipe.photoPath"/>
     </a>
     </li>
-
 </ul>
+</div>

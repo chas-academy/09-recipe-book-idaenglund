@@ -157,6 +157,18 @@
   dependencies:
     tslib "^1.7.1"
 
+"@clr/angular@^0.11.4":
+  version "0.11.4"
+  resolved "https://registry.yarnpkg.com/@clr/angular/-/angular-0.11.4.tgz#47ea31fb36d570de3d1522c78758893dc1f8e356"
+
+"@clr/icons@^0.11.4":
+  version "0.11.4"
+  resolved "https://registry.yarnpkg.com/@clr/icons/-/icons-0.11.4.tgz#0187247a394c839fbcf1623c6581fee2aa3e6c7d"
+
+"@clr/ui@^0.11.4":
+  version "0.11.4"
+  resolved "https://registry.yarnpkg.com/@clr/ui/-/ui-0.11.4.tgz#93c9010b3ae1ee4719d7a2f1d0c0fb0e0b7b309f"
+
 "@ngtools/json-schema@1.1.0", "@ngtools/json-schema@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@ngtools/json-schema/-/json-schema-1.1.0.tgz#c3a0c544d62392acc2813a42c8a0dc6f58f86922"

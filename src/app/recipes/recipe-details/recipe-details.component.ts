@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Recipe} from '../recipe.model';  
 import { RecipeService } from '../../recipe.service';  
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';  
+import { debug } from 'util';
 
 
 @Component({
@@ -11,7 +12,6 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class RecipeDetailsComponent implements OnInit {
   recipe; 
-
   constructor(
     private service: RecipeService, 
     private route: ActivatedRoute,
@@ -25,7 +25,10 @@ export class RecipeDetailsComponent implements OnInit {
   getRecipe(): void {
     const recipeId = this.route.snapshot.paramMap.get('id')
     this.service.getRecipe(recipeId)
-     .then((res) => this.recipe = res); 
+     .then((res) => {
+       console.log(res);
+       return this.recipe = res
+      });
   }
 
 }
