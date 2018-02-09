@@ -25,10 +25,9 @@ export class RecipeService {
       fetch(`https://api.edamam.com/search?q=${query}&app_id=${APPID}&app_key=${APPKEY}`) 
       .then(res => res.json())
       .then(res => {
-        console.log(res); 
-          res.hits.forEach((item, index) => {
+          res.hits.forEach(item => {
             RECIPES.push(new Recipe(
-            index,      
+            encodeURIComponent(item.recipe.uri),      
             item.recipe.url, 
             item.recipe.label, 
             item.recipe.image, 
@@ -43,32 +42,25 @@ export class RecipeService {
   
     return promise; 
   }
-    getRecipe(recipeId:number | string ) {
-      let recipe = null; 
+    getRecipe(recipeId: string) {
+      let recipe: Recipe; 
       const APPKEY = environment.app_key; 
       const APPID = environment.app_id;
       const promise = new Promise ((resolve, reject) => {
         fetch(`https://api.edamam.com/search?r=${recipeId}&app_id=${APPID}&app_key=${APPKEY}`)
         .then(res => res.json())
         .then(res=> {
-          recipe =  new Recipe(
+          recipe = new Recipe(
             res[0].uri,
             res[0].url, 
             res[0].label, 
             res[0].image, 
             res[0].ingredientsLines, 
-            recipe.healthLabels); 
-
-        }); 
-
-          resolve(recipe);
-        //return Observable.of(recipe); 
+            res[0].healthLabels);
+            resolve(recipe);
+        });
       }); 
-      // return this.getRecipes()
-      // .map(recipes => recipes.find(recipe => recipe.id === +recipeId)); 
       return promise;
    
     }
 }
-
-  // ActivatedRoute? 

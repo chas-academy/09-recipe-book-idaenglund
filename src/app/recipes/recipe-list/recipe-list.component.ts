@@ -14,9 +14,8 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 
 export class RecipeListComponent implements OnInit {
  selectedRecipe = Recipe; 
- recipes: Recipe; 
- 
- private selectedId: number; 
+ recipes: Recipe[]; 
+
  
     constructor(
     private service: RecipeService,
@@ -28,11 +27,14 @@ export class RecipeListComponent implements OnInit {
    } 
 
    getRecipes(): void {
-       this.service.getRecipes('tofu').then(response => console.log(response)); 
+       const that = this; 
+       this.service.getRecipes('tofu').then((recipes: Recipe[]) => {
+            return that.recipes = recipes; 
+       }); 
    }
 
    onRecipeSelected(recipe: Recipe){
-       //this.selectedRecipe = recipe; 
+       this.selectedRecipe = recipe; 
 
    }
 

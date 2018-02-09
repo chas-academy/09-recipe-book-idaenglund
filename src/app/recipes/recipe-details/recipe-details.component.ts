@@ -4,15 +4,13 @@ import { RecipeService } from '../../recipe.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';  
 
 
-
-
 @Component({
   selector: 'app-recipe-details',
   templateUrl: './recipe-details.component.html',
   styleUrls: ['./recipe-details.component.css']
 })
 export class RecipeDetailsComponent implements OnInit {
-  recipe: Recipe; 
+  recipe; 
 
   constructor(
     private service: RecipeService, 
@@ -25,11 +23,9 @@ export class RecipeDetailsComponent implements OnInit {
   }
 
   getRecipe(): void {
-    const recipeId = +this.route.snapshot.paramMap.get('id')
+    const recipeId = this.route.snapshot.paramMap.get('id')
     this.service.getRecipe(recipeId)
-     .then((recipe) => {
-       console.log(recipe); 
-     }); 
+     .then((res) => this.recipe = res); 
   }
 
 }

@@ -1,10 +1,9 @@
 <ul>
     <li
-     *ngFor="let recipe of recipes"
-     (click)="onRecipeSelected(recipe)"
-     >
+     *ngFor="let recipe of recipes" (click)="onRecipeSelected(recipe)">
      <a routerLink="recipe/{{recipe.id}}">
     {{recipe.title}}
+    <img [src]="recipe.photoPath"/>
     </a>
     </li>
 

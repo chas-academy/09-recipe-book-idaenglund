@@ -1,6 +1,7 @@
-<div class >
+<div>
     <app-recipe-list (recipeItemSelected)="selectedRecipe =$event"
     ></app-recipe-list>
+
 </div>
 
 <p *ngIf="selectedRecipe; else emptyText">

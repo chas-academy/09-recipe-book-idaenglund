@@ -11,7 +11,7 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['/recipes.component.css']
 })
 export class RecipesComponent implements OnInit {
-  ngOnInit
+  ngOnInit(){}
 
   private selectedRecipes: number; 
 

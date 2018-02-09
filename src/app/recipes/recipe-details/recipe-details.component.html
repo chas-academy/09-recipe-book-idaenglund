@@ -1,6 +1,18 @@
 <div *ngIf="recipe">
-  <img src="{{recipe.photoPath}}"/>
+  <img [src]="recipe.photoPath"/>
   <p>{{recipe.title}}</p>
+
+</div>
+<div *ngIf="recipe">
+  <ul>
+    <li>{{recipe.healthLabels}}</li>
+  </ul>
+</div>
+
+<div *ngIf="recipe">
+  <ul>
+    <li>{{recipe.ingredients}}</li>
+  </ul>
 </div>
 
 <!--Show loading if no recipe -->

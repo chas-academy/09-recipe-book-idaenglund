@@ -1,5 +1,5 @@
 export class Recipe { [x :string]: any;
-    public id: Number | string; 
+    public id: string; 
     public url: string; 
     public title: string; 
     public photoPath: string;
@@ -7,7 +7,7 @@ export class Recipe { [x :string]: any;
     public healthLabels: Array<string>; 
 
     constructor(
-        id: number | string, 
+        id: string, 
            url: string, 
            title: string, 
             photoPath: string, 
