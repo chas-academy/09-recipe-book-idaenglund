@@ -4,15 +4,15 @@
 
 
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-</div>
+<app-layout>
+
+<router-outlet></router-outlet>
+</app-layout>
+
 
 <nav>
   <a href="/" routerLinkActive="active">Go home</a>
   <a href="/saved" routerLinkActive="active">Go to saved recipes</a>
 </nav>
 
-<router-outlet></router-outlet> <!--important for routes, or else routes is not going to work -->
+ <!--important for routes, or else routes is not going to work -->

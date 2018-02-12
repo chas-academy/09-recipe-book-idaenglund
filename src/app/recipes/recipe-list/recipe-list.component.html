@@ -1,7 +1,8 @@
-
-<input [(ngModel)]="query" type="text" (keyup)="onKeyUp($event)" class="inputText">
-<div  *ngFor="let recipe of recipes" (click)="onRecipeSelected(recipe)" class="row">
-        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+<div class="container-fluid">
+<!--<input [(ngModel)]="query" type="text" (keyup)="onKeyUp($event)" class="inputText">-->
+<div class="row">
+    <div  *ngFor="let recipe of recipes" (click)="onRecipeSelected(recipe)" class="row">
+        <div class="col-sm">
             <a routerLink="recipe/{{recipe.id}}"class="card clickable">
                 <div class="card-img">
                     <img [src]="recipe.photoPath">
@@ -14,3 +15,7 @@
             </a>
         </div>
     </div>
+</div>
+</div>
+
+

@@ -12,13 +12,14 @@ import { SavedComponent } from './saved/saved.component';
 import { RecipeDetailsComponent } from './recipes/recipe-details/recipe-details.component';
 import { FormsModule } from '@angular/forms';
 import { ClarityModule } from '@clr/angular'; 
+import { UiModule } from './ui/ui.module';
 //Service
 import { RecipeService } from './recipe.service'; 
 
 const routes : Routes = [
 { path: '', component: RecipesComponent }, 
 { path: 'recipe/:id', component: RecipeDetailsComponent }, 
-{ path: '.saved', component: SavedComponent }, 
+{ path: 'saved', component: SavedComponent }, 
 
 
 
@@ -37,6 +38,7 @@ const routes : Routes = [
   ],
   imports: [
     FormsModule,
+    UiModule, 
     ClarityModule, 
     BrowserModule,
     RouterModule.forRoot(
