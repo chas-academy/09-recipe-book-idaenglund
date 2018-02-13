@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.query = '';
+
   }
 
   onEnter(query: string) {
