@@ -32,7 +32,6 @@ export class RecipeDetailsComponent implements OnInit {
   }
 
   saveRecipe(recipeId:string) {
-    debugger; 
   }
 
 }

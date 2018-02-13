@@ -1,0 +1,50 @@
+  <header class="header-1">
+    <div class="branding">
+      <a class="nav-link">
+        <clr-icon shape="shield"></clr-icon>
+        <span class="title">AwesomeRecipes</span>
+      </a>
+    </div>
+    <div class="header-nav">
+      <a href="/" routerLinkActive="active" class="active nav-link nav-icon">
+        <clr-icon shape="home"></clr-icon>
+      </a>
+      <a class=" nav-link nav-icon">
+        <clr-icon shape="cog"></clr-icon>
+      </a>
+    </div>
+    <div class="search">
+      <label for="search_input">
+        <input #search [(value)]="query" id="search_input" type="text" placeholder="Search for recipes..." (keyup.enter)="onEnter(search.value)">
+      </label>
+    </div>
+    <div class="header-actions">
+      <clr-dropdown class="dropdown bottom-right">
+        <button class="nav-icon" clrDropdownToggle>
+          <clr-icon shape="user"></clr-icon>
+          <clr-icon shape="caret down"></clr-icon>
+        </button>
+        <div class="dropdown-menu">
+          <a clrDropdownItem>About</a>
+          <a clrDropdownItem>Preferences</a>
+          <a clrDropdownItem>Log out</a>
+        </div>
+      </clr-dropdown>
+    </div>
+  </header>
+  <nav class="subnav">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">All</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Vegan</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Vegetarian</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Gluten-free</a>
+      </li>
+    </ul>
+  </nav>

@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Awesome vegan recipes';
+  title = '';
   constructor(router: Router) {
   }
 }

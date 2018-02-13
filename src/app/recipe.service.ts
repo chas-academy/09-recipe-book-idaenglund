@@ -1,20 +1,19 @@
 import 'rxjs/add/observable/of'; 
 import 'rxjs/add/operator/map'; 
 
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+
 import { Injectable } from '@angular/core';
-import {Recipe} from './recipes/recipe.model'; 
+import { Recipe } from './recipes/recipe.model'; 
 import { Observable } from 'rxjs/Observable'; 
 import { environment } from '../environments/environment';
 
-
-
-
-
 @Injectable()
 export class RecipeService {
-  constructor() {
+  private recipes = new BehaviorSubject<Recipe[]>([]);
+  recipe$ = this.recipes.asObservable();
 
-  }
+  constructor() {}
     
   getRecipes(query) {
     const RECIPES = []; 
@@ -27,7 +26,7 @@ export class RecipeService {
       .then(res => {
           res.hits.forEach(item => {
             RECIPES.push(new Recipe(
-            encodeURIComponent(item.recipe.uri),      
+            encodeURIComponent(item.recipe.uri),
             item.recipe.url, 
             item.recipe.label, 
             item.recipe.image, 
@@ -35,7 +34,8 @@ export class RecipeService {
             item.recipe.healthLabels)); 
  
         }); 
-        resolve(RECIPES); 
+        resolve(RECIPES);
+        this.recipes.next(RECIPES); // Also trigger Observable next()
       }); 
         
     }); 

@@ -1,21 +1,18 @@
 <div class="container-fluid">
-<!--<input [(ngModel)]="query" type="text" (keyup)="onKeyUp($event)" class="inputText">-->
-<div class="row">
-    <div  *ngFor="let recipe of recipes" (click)="onRecipeSelected(recipe)" class="row">
-        <div class="col-sm">
-            <a routerLink="recipe/{{recipe.id}}"class="card clickable">
-                <div class="card-img">
-                    <img [src]="recipe.photoPath">
-                </div>
-                <div class="card-block">
-                    <p class="card-text">
+    <div class="row">
+        <div *ngFor="let recipe of recipes" (click)="onRecipeSelected(recipe)" class="row">
+            <div class="col-sm">
+                <a routerLink="recipe/{{recipe.id}}" class="card clickable">
+                    <div class="card-img">
+                        <img [src]="recipe.photoPath">
+                    </div>
+                    <div class="card-block">
+                        <p class="card-text">
                             {{recipe.title}}
-                    </p>
-                </div>
-            </a>
+                        </p>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
 </div>
-</div>
-
-
