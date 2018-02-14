@@ -10,6 +10,7 @@ export class SavedComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log("Now run saved")
   }
 
 }

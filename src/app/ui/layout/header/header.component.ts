@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute, ParamMap } from '@angular/router'; 
 import { RecipeService } from '../../../recipe.service';
 
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html', 
@@ -11,18 +12,21 @@ import { RecipeService } from '../../../recipe.service';
 export class HeaderComponent implements OnInit {
   query: string; 
 
+
+
   constructor(
     private service: RecipeService
   ) { }
 
   ngOnInit() {
     this.query = '';
-
   }
 
   onEnter(query: string) {
     this.query = query;
     this.service.getRecipes(this.query);
+     
+  
   }
 
 }

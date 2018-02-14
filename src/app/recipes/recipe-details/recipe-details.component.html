@@ -7,7 +7,7 @@
     <span></span>
     <li class="sort">{{recipe.healthLabels}}</li>
   </ul>
-  <button class="btn btn-success" (click)="saveRecipe(recipe.id)">Save Recipe</button>
+  <button [routerLink]="['/saved']" class="btn btn-success" (click)="saveRecipe(recipe.id)">Save Recipe</button>
 
 </div>
 

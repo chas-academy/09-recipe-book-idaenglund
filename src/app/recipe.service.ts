@@ -1,12 +1,12 @@
 import 'rxjs/add/observable/of'; 
 import 'rxjs/add/operator/map'; 
-
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-
 import { Injectable } from '@angular/core';
 import { Recipe } from './recipes/recipe.model'; 
 import { Observable } from 'rxjs/Observable'; 
 import { environment } from '../environments/environment';
+import { Placeholder } from '@angular/compiler/src/i18n/i18n_ast';
+//import { HeaderComponent } from './ui/layout/header/header.component'; 
 
 @Injectable()
 export class RecipeService {
@@ -19,7 +19,8 @@ export class RecipeService {
     const RECIPES = []; 
     const APPKEY = environment.app_key; 
     const APPID = environment.app_id; 
-    let recipe = null; 
+    let recipe = null;
+
     const promise = new Promise((resolve, reject) => {
       fetch(`https://api.edamam.com/search?q=${query}&app_id=${APPID}&app_key=${APPKEY}`) 
       .then(res => res.json())
@@ -32,15 +33,19 @@ export class RecipeService {
             item.recipe.image, 
             item.recipe.ingredientLines, 
             item.recipe.healthLabels)); 
- 
-        }); 
+          }); 
+
         resolve(RECIPES);
         this.recipes.next(RECIPES); // Also trigger Observable next()
-      }); 
-        
-    }); 
+
+      })
+      .catch(reject); 
+        // Show error message to user? 
   
+       });
+    
     return promise; 
+
   }
     getRecipe(recipeId: string) {
       let recipe: Recipe; 
@@ -64,3 +69,5 @@ export class RecipeService {
    
     }
 }
+
+
