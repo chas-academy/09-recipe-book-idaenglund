@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs/Observable'; 
-import { ActivatedRoute, ParamMap } from '@angular/router'; 
+import { ActivatedRoute, ParamMap, RouterModule, Routes } from '@angular/router'; 
 import { RecipeService } from '../../../recipe.service';
 
 

@@ -4,7 +4,7 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false, 
+  production: false,  // To do, generate new keys and put them in a .env file. I shouldn´t have dem here - Tried, but failed...
   app_id: '12282241',
   app_key: 'fabf7b95f02d42f72334a9e1ccdd0a43'
 

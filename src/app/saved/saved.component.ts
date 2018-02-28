@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { resetFakeAsyncZone } from '@angular/core/testing';
+import { SavedService } from './saved.service'; 
 
 @Component({
   selector: 'app-saved',
@@ -7,10 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SavedComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private savedService: SavedService
+  ) { }
 
   ngOnInit() {
-    console.log("Now run saved")
+    
+    this.savedService.getLists().then(res => {
+
+    }); 
+
   }
 
 }

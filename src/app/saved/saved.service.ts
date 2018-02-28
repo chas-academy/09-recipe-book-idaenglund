@@ -14,7 +14,7 @@ export class SavedService {
     let recipe = null;
 
     const promise = new Promise((resolve, reject) => {
-      fetch(`https://api.edamam.com/search?q=${query}&app_id=${APPID}&app_key=${APPKEY}`) 
+      fetch(`https://localhost:3000/saved`) 
       .then(res => res.json())
       .then(res => {
         debugger; 

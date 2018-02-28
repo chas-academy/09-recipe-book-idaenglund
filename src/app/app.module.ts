@@ -15,6 +15,7 @@ import { ClarityModule } from '@clr/angular';
 import { UiModule } from './ui/ui.module';
 //Service
 import { RecipeService } from './recipe.service'; 
+import { SavedService } from './saved/saved.service'; 
 
 const routes : Routes = [
 { path: '', component: RecipesComponent }, 
@@ -46,7 +47,7 @@ const routes : Routes = [
       // {enableTracing : true } <--debugga routes
     )
   ],
-  providers:[RecipeService],
+  providers:[RecipeService, SavedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
