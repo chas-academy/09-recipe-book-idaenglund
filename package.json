@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "npm-run-all --parallel serve server",
+    "serve": "ng serve",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
@@ -28,6 +29,7 @@
     "core-js": "^2.4.1",
     "json": "^9.0.6",
     "json-server": "^0.12.1",
+    "npm-run-all": "^4.1.2",  
     "rxjs": "^5.5.6",
     "serve": "^6.4.9",
     "zone.js": "^0.8.19"

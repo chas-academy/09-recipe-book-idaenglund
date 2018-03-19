@@ -11,22 +11,19 @@ import { ActivatedRoute, ParamMap } from "@angular/router";
 })
 export class RecipeListComponent implements OnInit {
   selectedRecipe: Recipe;
-  recipes: Recipe[];
-  query: string; 
+  recipes: Recipe[]; 
 
   constructor(private service: RecipeService, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.getRecipes();
-    this.query = 'tofu';
-    this.service.getRecipes(this.query);
    
   }
 
   getRecipes(): void {
-    this.service.recipe$.subscribe((res: Recipe[]) => {
-        return this.recipes = res;
-        
+    const that = this;
+    this.service.getRecipes().then((recipes: Recipe[]) => {
+        return that.recipes = recipes; 
     });
     
 

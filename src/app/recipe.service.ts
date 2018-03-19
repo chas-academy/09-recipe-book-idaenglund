@@ -1,12 +1,12 @@
-import 'rxjs/add/observable/of'; 
-import 'rxjs/add/operator/map'; 
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Injectable } from '@angular/core';
-import { Recipe } from './recipes/recipe.model'; 
-import { Observable } from 'rxjs/Observable'; 
-import { environment } from '../environments/environment';
-import { Placeholder } from '@angular/compiler/src/i18n/i18n_ast';
-//import { HeaderComponent } from './ui/layout/header/header.component'; 
+import "rxjs/add/observable/of";
+import "rxjs/add/operator/map";
+import { BehaviorSubject } from "rxjs/BehaviorSubject";
+import { Injectable } from "@angular/core";
+import { Recipe } from "./recipes/recipe.model";
+import { Observable } from "rxjs/Observable";
+import { environment } from "../environments/environment";
+import { Placeholder } from "@angular/compiler/src/i18n/i18n_ast";
+//import { HeaderComponent } from './ui/layout/header/header.component';
 
 @Injectable()
 export class RecipeService {
@@ -14,60 +14,52 @@ export class RecipeService {
   recipe$ = this.recipes.asObservable();
 
   constructor() {}
-    
-  getRecipes(query) {
-    const RECIPES = []; 
-    const APPKEY = environment.app_key; 
-    const APPID = environment.app_id; 
-    let recipe = null;
 
+  getRecipes() {
+    const RECIPES = [];
     const promise = new Promise((resolve, reject) => {
-      fetch(`https://api.edamam.com/search?q=${query}&app_id=${APPID}&app_key=${APPKEY}`) 
-      .then(res => res.json())
-      .then(res => {
-          res.hits.forEach(item => {
-            RECIPES.push(new Recipe(
-            encodeURIComponent(item.recipe.uri),
-            item.recipe.url, 
-            item.recipe.label, 
-            item.recipe.image, 
-            item.recipe.ingredientLines, 
-            item.recipe.healthLabels)); 
-          }); 
-
-        resolve(RECIPES);
-        this.recipes.next(RECIPES); // Also trigger Observable next()
-
-      })
-      .catch(reject); 
-        // Show error message to user? 
-  
-       });
-    
-    return promise; 
-
-  }
-    getRecipe(recipeId: string) {
-      let recipe: Recipe; 
-      const APPKEY = environment.app_key; 
-      const APPID = environment.app_id;
-      const promise = new Promise ((resolve, reject) => {
-        fetch(`https://api.edamam.com/search?r=${recipeId}&app_id=${APPID}&app_key=${APPKEY}`)
+      //fetch(`https://api.edamam.com/search?q=${query}&app_id=${APPID}&app_key=${APPKEY}`)
+      fetch(`http://localhost:3000/hits`)
         .then(res => res.json())
-        .then(res=> {
+        .then(res => {
+          res.forEach(item => {
+            RECIPES.push(
+              new Recipe(
+                item.id,
+                item.url,
+                item.label,
+                item.image,
+                item.ingredientLines,
+                item.healthLabels
+              )
+            );
+          });
+
+          resolve(RECIPES);
+        })
+        .catch(reject);
+      // Show error message to user?
+    });
+
+    return promise;
+  }
+  getRecipe(recipeId: number | string) {
+    let recipe: Recipe;
+    const promise = new Promise((resolve, reject) => {
+      fetch(`http://localhost:3000/hits/${recipeId}`)
+        .then(res => res.json())
+        .then(res => {
           recipe = new Recipe(
-            res[0].uri,
-            res[0].url, 
-            res[0].label, 
-            res[0].image, 
-            res[0].ingredientLines, 
-            res[0].healthLabels);
-            resolve(recipe);
+            res.id,
+            res.url,
+            res.label,
+            res.image,
+            res.ingredientLines,
+            res.healthLabels
+          );
+          resolve(recipe);
         });
-      }); 
-      return promise;
-   
-    }
+    });
+    return promise;
+  }
 }
-
-

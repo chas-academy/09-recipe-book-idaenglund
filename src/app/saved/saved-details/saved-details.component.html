@@ -1,0 +1,26 @@
+<!-- <div *ngIf="list">
+  <p>{{ list.title }}</p>
+  <ul>
+    <li *ngFor="let recipe of list.recipes">
+      <p>{{ recipe }}</p>
+    </li>
+  </ul>
+</div> -->
+
+<div *ngIf="list else empty">
+    <h2>{{list.title}}</h2>
+
+  <div *ngIf="list.recipe?.length > 0 else empty">
+      <li *ngFor="let recipe of list.recipes">
+      <img [src]="recipe.image"/>
+      <h1>{{recipe.label}}</h1>
+    
+      <ul>
+        <li *ngFor="let ingredient of recipe.ingredientLines" class="ingredients">{{ingredient}}</li>
+        <span></span>
+        <li class="sort">{{recipe.healthLabels}}</li>
+      </ul>
+      <button type="button" class="btn btn-icon btn-danger" (click)="removeRecipe(list.id, recipe.id)">Remove</button>  
+    </div>
+
+ 

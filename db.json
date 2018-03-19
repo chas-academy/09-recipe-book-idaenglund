@@ -6309,21 +6309,17 @@
     }
   ],
   "saved": [
-    { 
+    {
       "id": 1,
       "title": "My recipes",
       "recipes": [
-        1,
-        2
+        1
       ]
     },
-    { 
+    {
       "id": 2,
       "title": "My not so great recipes",
-      "recipes": [
-        4,
-        5
-      ]
+      "recipes": []
     }
   ]
 }

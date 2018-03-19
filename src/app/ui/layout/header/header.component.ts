@@ -18,13 +18,11 @@ export class HeaderComponent implements OnInit {
     private service: RecipeService
   ) { }
 
-  ngOnInit() {
-    this.query = '';
+  ngOnInit() {;
   }
 
-  onEnter(query: string) {
-    this.query = query;
-    this.service.getRecipes(this.query);
+  onEnter() {
+    this.service.getRecipes();
      
   
   }
