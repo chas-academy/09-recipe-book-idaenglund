@@ -1,7 +1,12 @@
 <div class="container-fluid">
     <span id="error"></span>
+    <button class="mat-button-toggle" (click)="filter('All')">Show all</button>
+    <button class="mat-button-toggle" (click)="filter('Vegan')">Vegan recipes</button>
+    <button class="mat-button-toggle" (click)="filter('Vegetarian')">Vegetarian recipes</button>
+    <button class="mat-button-toggle" (click)="filter('Peanut-Free')">Peanut-Free recipes</button>
+    <button class="mat-button-toggle" (click)="filter('Sugar-Conscious')">Low-sugar recipes</button>
     <div class="row">
-        <div *ngFor="let recipe of recipes" (click)="onRecipeSelected(recipe)" class="row">
+        <div *ngFor="let recipe of filteredRecipes" (click)="onRecipeSelected(recipe)" class="row">
             <div class="col-sm">
                 <a routerLink="/recipe/{{recipe.id}}" class="card clickable">
                     <div class="card-img">

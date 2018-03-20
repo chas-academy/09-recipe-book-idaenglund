@@ -1,30 +1,15 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Observable } from 'rxjs/Observable'; 
-import { ActivatedRoute, ParamMap, RouterModule, Routes } from '@angular/router'; 
-import { RecipeService } from '../../../recipe.service';
-
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html', 
   styles: []
 })
-export class HeaderComponent implements OnInit {
-  query: string; 
-
-
-
-  constructor(
-    private service: RecipeService
-  ) { }
-
-  ngOnInit() {;
-  }
-
-  onEnter() {
-    this.service.getRecipes();
-     
-  
-  }
-
+export class HeaderComponent {
+  subLinks = [
+    { link : ['/', 'saved'], label: 'Saved Recipes' },
+    { link : ['/', 'vegan'], label: 'Vegan Recipes' },
+    { link : ['/', 'vegetarian'], label: 'Vegetarian Recipes' },
+    { link : ['/', 'glutenfree'], label: 'Glutenfree Recipes' }
+  ]
 }

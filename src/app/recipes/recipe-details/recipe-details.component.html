@@ -7,8 +7,66 @@
     <span></span>
     <li class="sort">{{recipe.healthLabels}}</li>
   </ul>
-  <button [routerLink]="['/saved']" class="btn btn-success" (click)="saveRecipe(recipe.id)">Save Recipe</button>
+  <button class="btn btn-success" (click)="toggleModal(recipe.id)">Save Recipe</button>
 
 </div>
+<div [hidden]="!showModal">
+    <div class="modal">
+      <div class="modal-dialog" role="dialog" aria-hidden="true">
+          <div class="modal-content" *ngIf='lists?.length > 0 else new'>
+              <div class="modal-header">
+                  <button aria-label="Close" class="close" type="button" (click)="toggleModal()">
+                      <clr-icon aria-hidden="true" shape="close"></clr-icon>
+                  </button>
+                  <h3 class="modal-title">Add recipe to list</h3>
+              </div>
+              <div class="modal-body">
+                <div class="form-block">
+                  <div class="form-group">
+                    <label for="selects_1">Select list:</label>
+                    <div class="select">
+                      <select id="selects_1" #selectedList>
+                        <option *ngFor="let list of lists" [value]="list.id">{{ list.title }}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                  <button class="btn btn-outline" type="button" (click)="toggleModal()">Cancel</button>
+                  <button class="btn btn-primary" type="button" (click)="saveRecipe(selectedList.value)">Ok</button>
+              </div>
+          </div>
+          <ng-template #new>
+            <div class="modal-content" >
+                <div class="modal-header">
+                    <button aria-label="Close" class="close" type="button" (click)="toggleModal()">
+                        <clr-icon aria-hidden="true" shape="close"></clr-icon>
+                    </button>
+                    <h3 class="modal-title">Create new list</h3>
+                    <p>Whoops, you have no lists yet! :(<br/>
+                    Create a new one and then add this recipe to it.</p>
+                </div>
+                <div class="modal-body">
+                  <div class="form-block">
+                    <div class="form-group">
+                      <label for="list_name">Name your list:</label>
+                      <div class="form-group">
+                        <label class="required"></label>
+                        <input type="text" name="list_name" required id="requiredInput" placeholder="List name goes here" #listTitle>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline" type="button" (click)="toggleModal()">Cancel</button>
+                    <button class="btn btn-primary" type="button" (click)="addList(listTitle.value)">Create list</button>
+                </div>
+            </div>
+          </ng-template>
+      </div>
+    </div>
+    <div class="modal-backdrop" aria-hidden="true"></div>
+  </div>
 
 <!--Show loading if no recipe -->

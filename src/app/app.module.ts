@@ -26,7 +26,7 @@ const routes : Routes = [
 { path: '', component: RecipesComponent }, 
 { path: 'recipe/:id', component: RecipeDetailsComponent }, 
 { path: 'saved', component: SavedComponent }, 
-{ path: 'saved/saved/:id', component: SavedDetailsComponent},
+{ path: 'saved/:id', component: SavedDetailsComponent},
 ]; 
 
 

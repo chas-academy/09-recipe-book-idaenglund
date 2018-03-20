@@ -1,3 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-
-
+.nav .nav-link.active, .nav .nav-link:active, .nav .nav-link:focus, .nav .nav-link:hover {
+    cursor: pointer;
+}
