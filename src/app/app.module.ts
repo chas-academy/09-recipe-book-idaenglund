@@ -23,10 +23,10 @@ import { RecipeService } from './recipe.service';
 import { SavedService } from './saved/saved.service'; 
 
 const routes : Routes = [
-{ path: '', component: RecipesComponent }, 
-{ path: 'recipe/:id', component: RecipeDetailsComponent }, 
-{ path: 'saved', component: SavedComponent }, 
-{ path: 'saved/:id', component: SavedDetailsComponent},
+  { path: '', component: RecipesComponent }, 
+  { path: 'recipe/:id', component: RecipeDetailsComponent }, 
+  { path: 'saved', component: SavedComponent }, 
+  { path: 'saved/:id', component: SavedDetailsComponent},
 ]; 
 
 

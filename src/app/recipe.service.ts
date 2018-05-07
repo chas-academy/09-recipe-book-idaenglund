@@ -8,6 +8,10 @@ import { environment } from "../environments/environment";
 import { Placeholder } from "@angular/compiler/src/i18n/i18n_ast";
 //import { HeaderComponent } from './ui/layout/header/header.component';
 
+const query = 'pasta';
+const APPID = environment.app_id;
+const APPKEY = environment.app_key;
+
 @Injectable()
 export class RecipeService {
   private recipes = new BehaviorSubject<Recipe[]>([]);
@@ -18,19 +22,20 @@ export class RecipeService {
   getRecipes() {
     const RECIPES = [];
     const promise = new Promise((resolve, reject) => {
-      //fetch(`https://api.edamam.com/search?q=${query}&app_id=${APPID}&app_key=${APPKEY}`)
-      fetch(`http://localhost:3000/hits`)
+      fetch(`https://api.edamam.com/search?q=${query}&app_id=${APPID}&app_key=${APPKEY}`)
+      // fetch(`http://localhost:3000/hits`)
         .then(res => res.json())
         .then(res => {
-          res.forEach(item => {
+          res.hits.forEach(item => {
+            let recipeId = item.recipe.uri.split('#')[1];
             RECIPES.push(
               new Recipe(
-                item.id,
-                item.url,
-                item.label,
-                item.image,
-                item.ingredientLines,
-                item.healthLabels
+                recipeId,
+                item.recipe.url,
+                item.recipe.label,
+                item.recipe.image,
+                item.recipe.ingredientLines,
+                item.recipe.healthLabels
               )
             );
           });
@@ -43,23 +48,26 @@ export class RecipeService {
 
     return promise;
   }
-  getRecipe(recipeId: number | string) {
+  getRecipe(recipeId: string) {
     let recipe: Recipe;
+    let recipeUrl = encodeURIComponent(`http://www.edamam.com/ontologies/edamam.owl#${recipeId}`);
     const promise = new Promise((resolve, reject) => {
-      fetch(`http://localhost:3000/hits/${recipeId}`)
+      fetch(`https://api.edamam.com/search?r=${recipeUrl}&app_id=${APPID}&app_key=${APPKEY}`)
+      // fetch(`http://localhost:3000/hits/${recipeId}`)
         .then(res => res.json())
         .then(res => {
           recipe = new Recipe(
-            res.id,
-            res.url,
-            res.label,
-            res.image,
-            res.ingredientLines,
-            res.healthLabels
+            res[0].uri,
+            res[0].url,
+            res[0].label,
+            res[0].image,
+            res[0].ingredientLines,
+            res[0].healthLabels
           );
           resolve(recipe);
         });
     });
     return promise;
   }
+  
 }

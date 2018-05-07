@@ -10,7 +10,7 @@ export class SavedService {
   getLists() {
     const LISTS = [];
     const promise = new Promise((resolve, reject) => {
-      fetch("http://localhost:3000/saved")
+      fetch("http://api-recipebook.test/api/saved")
         .then(res => res.json())
         .then(res => {
           res.forEach(item => {
@@ -30,7 +30,7 @@ export class SavedService {
     let recipes = [];
 
     const promise = new Promise((resolve, reject) => {
-      fetch(`http://localhost:3000/saved/${listId}`)
+      fetch(`http://api-recipebook.test/api/saved/${listId}`)
         .then(res => res.json())
         .then(res => {
           return Promise.all(
@@ -48,7 +48,7 @@ export class SavedService {
 
   addRecipeToList(listId: number, recipeId: number) {
     const promise = new Promise((resolve, reject) => {
-      fetch(`http://localhost:3000/saved/${listId}`, {
+      fetch(`http://api-recipebook.test/api/saved/${listId}`, {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json"
@@ -67,7 +67,7 @@ export class SavedService {
 
   deleteRecipeFromList(listId: number, recipeId: number) {
     const promise = new Promise((resolve, reject) => {
-      fetch(`http://localhost:3000/saved/${listId}`, {
+      fetch(`http://api-recipebook.test/api/saved/${listId}`, {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json"
@@ -76,9 +76,8 @@ export class SavedService {
       })
         .then(res => res.json())
         .then(res => {
-          console.log(res)
           const newRecipes = res.recipes.filter(recipe => recipe !== recipeId)
-          return fetch(`http://localhost:3000/saved/${listId}`, {
+          return fetch(`http://api-recipebook.test/api/saved/${listId}`, {
             headers: {
               Accept: "application/json",
               "Content-Type": "application/json"

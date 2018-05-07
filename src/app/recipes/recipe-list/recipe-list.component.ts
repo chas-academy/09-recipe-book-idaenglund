@@ -13,11 +13,13 @@ export class RecipeListComponent implements OnInit {
   selectedRecipe: Recipe;
   recipes: Recipe[];
   filteredRecipes: Recipe[];
+  query = ''; 
 
   constructor(private service: RecipeService, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.getRecipes();
+    this.query = '';
    
   }
 
@@ -26,7 +28,6 @@ export class RecipeListComponent implements OnInit {
     this.service.getRecipes().then((recipes: Recipe[]) => {
         that.filteredRecipes = recipes;
         that.recipes = recipes; 
-        console.log(recipes)
     });
     
 
@@ -43,4 +44,5 @@ export class RecipeListComponent implements OnInit {
   onRecipeSelected(recipe: Recipe) {
     this.selectedRecipe = recipe;
   }
+  
 }

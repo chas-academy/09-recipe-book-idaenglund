@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/Cellar/yarn/1.5.1/libexec/bin/yarn.js start
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.5.1/libexec/bin/yarn.js build
 
 PATH: 
   /Users/idaenglund/.composer/vendor/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/idaenglund/.rvm/bin
@@ -33,7 +33,7 @@ npm manifest:
       "@angular/animations": "^5.2.0",
       "@angular/common": "^5.2.0",
       "@angular/compiler": "^5.2.0",
-      "@angular/core": "^5.2.0",
+      "@angular/core": "^5.2.9",
       "@angular/forms": "^5.2.0",
       "@angular/http": "^5.2.0",
       "@angular/platform-browser": "^5.2.0",
@@ -45,7 +45,7 @@ npm manifest:
       "core-js": "^2.4.1",
       "json": "^9.0.6",
       "json-server": "^0.12.1",
-      "npm-run-all": "^4.1.2",  
+      "npm-run-all": "^4.1.2",
       "rxjs": "^5.5.6",
       "serve": "^6.4.9",
       "zone.js": "^0.8.19"
@@ -200,9 +200,9 @@ Lockfile:
     dependencies:
       tslib "^1.7.1"
   
-  "@angular/core@^5.2.0":
-    version "5.2.4"
-    resolved "https://registry.yarnpkg.com/@angular/core/-/core-5.2.4.tgz#44a59bcea87b3aac9ce8ff2ff674fe9cb60e2041"
+  "@angular/core@^5.2.9":
+    version "5.2.9"
+    resolved "https://registry.yarnpkg.com/@angular/core/-/core-5.2.9.tgz#3daf13ef9aa754b9954ed21da3eb322e8b20f667"
     dependencies:
       tslib "^1.7.1"
   
@@ -8324,7 +8324,7 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: sh
-  Arguments: -c npm-run-all --parallel serve server
+  Arguments: -c ng build --prod
   Directory: /Users/idaenglund/Projekt/Inlämningar/09-recipe-book-idaenglund
   Output:
   
