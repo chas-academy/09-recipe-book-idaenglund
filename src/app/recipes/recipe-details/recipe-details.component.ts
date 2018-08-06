@@ -4,6 +4,7 @@ import { RecipeService } from "../../recipe.service";
 import { Router, ActivatedRoute, ParamMap } from "@angular/router";
 import { debug } from "util";
 import { SavedService } from "../../saved/saved.service";
+import { AuthService } from "../../shared/auth.service";
 import { Saved } from "../../saved/saved.model";
 
 @Component({
@@ -19,6 +20,7 @@ export class RecipeDetailsComponent implements OnInit {
   private selectedId: number;
 
   constructor(
+    private authService: AuthService,
     private recipeService: RecipeService,
     private savedService: SavedService,
     private route: ActivatedRoute
@@ -52,4 +54,9 @@ export class RecipeDetailsComponent implements OnInit {
     this.savedService.addRecipeToList(+listId, this.selectedId);
     this.showModal = !this.showModal;
   }
+
+  addList(listTitle: string) {
+    this.savedService.createList(listTitle, this.authService.getUser());
+    this.showModal = !this.showModal;
+  }; 
 }

@@ -1,9 +1,8 @@
-li {
-    list-style: none; 
-    font-size: 20px; 
+ul {
+  list-style-type: none;
+  font-size: 20px;
 }
 
 a {
-    color: black; 
-
+  color: black;
 }

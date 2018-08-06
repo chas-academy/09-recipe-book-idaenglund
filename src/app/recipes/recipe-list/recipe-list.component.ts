@@ -24,11 +24,21 @@ export class RecipeListComponent implements OnInit {
   }
 
   getRecipes(): void {
-    const that = this;
-    this.service.getRecipes().then((recipes: Recipe[]) => {
-        that.filteredRecipes = recipes;
-        that.recipes = recipes; 
+    this.service.recipe$.subscribe((res: Recipe[]) => {
+      this.filteredRecipes = res;
+      this.recipes = res;
     });
+
+    this.service.getRecipes('avocado');
+
+    
+
+
+    // const that = this;
+    // this.service.getRecipes().then((recipes: Recipe[]) => {
+    //     that.filteredRecipes = recipes;
+    //     that.recipes = recipes; 
+    // });
     
 
   }

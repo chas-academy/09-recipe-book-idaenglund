@@ -30,8 +30,10 @@ export class SavedDetailsComponent implements OnInit {
     });
   }
 
- removeRecipe(listId: number, recipeId: number) {
-    this.service.deleteRecipeFromList(listId,recipeId);
-    this.list.recipes = this.list.recipes.filter(recipe => +recipe.id !== recipeId);
-}
+  removeRecipe(listId: number, recipeId: string) {
+    this.service.deleteRecipeFromList(listId, recipeId);
+    this.list.recipes = this.list.recipes.filter(
+      recipe => recipe.id !== recipeId
+    );
+  }
 }
