@@ -8,9 +8,9 @@ import { environment } from "../environments/environment";
 import { Placeholder } from "@angular/compiler/src/i18n/i18n_ast";
 //import { HeaderComponent } from './ui/layout/header/header.component';
 
-const query = 'pasta';
-const APPID = environment.app_id;
 const APPKEY = environment.app_key;
+const APPID = environment.app_id;
+const EDAMAM_API_URL = environment.edamam_api_url;
 
 @Injectable()
 export class RecipeService {
@@ -19,18 +19,24 @@ export class RecipeService {
 
   constructor() {}
 
-  getRecipes() {
+  getRecipes(query = null) {
     const RECIPES = [];
+    let recipe = null;
+
+    const url = query
+      ? `${EDAMAM_API_URL}/search?q=${query}&app_id=${APPID}&app_key=${APPKEY}`
+      : `${EDAMAM_API_URL}/search?q=chicken&app_id=${APPID}&app_key=${APPKEY}`;
+
     const promise = new Promise((resolve, reject) => {
-      fetch(`https://api.edamam.com/search?q=${query}&app_id=${APPID}&app_key=${APPKEY}`)
-      // fetch(`http://localhost:3000/hits`)
+      fetch(url, {
+        mode: "cors"
+      })
         .then(res => res.json())
         .then(res => {
           res.hits.forEach(item => {
-            let recipeId = item.recipe.uri.split('#')[1];
             RECIPES.push(
               new Recipe(
-                recipeId,
+                encodeURIComponent(item.recipe.uri),
                 item.recipe.url,
                 item.recipe.label,
                 item.recipe.image,
@@ -41,6 +47,7 @@ export class RecipeService {
           });
 
           resolve(RECIPES);
+          this.recipes.next(RECIPES); // Also trigger Observable next()
         })
         .catch(reject);
       // Show error message to user?
@@ -52,8 +59,11 @@ export class RecipeService {
     let recipe: Recipe;
     let recipeUrl = encodeURIComponent(`http://www.edamam.com/ontologies/edamam.owl#${recipeId}`);
     const promise = new Promise((resolve, reject) => {
-      fetch(`https://api.edamam.com/search?r=${recipeUrl}&app_id=${APPID}&app_key=${APPKEY}`)
-      // fetch(`http://localhost:3000/hits/${recipeId}`)
+      fetch(
+        `${EDAMAM_API_URL}/search?r=${recipeId}&app_id=${APPID}&app_key=${APPKEY}`
+      , {
+        mode: "cors"
+      })
         .then(res => res.json())
         .then(res => {
           recipe = new Recipe(
