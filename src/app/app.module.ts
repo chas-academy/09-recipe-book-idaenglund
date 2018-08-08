@@ -27,20 +27,17 @@ import { RecipeService } from "./recipe.service";
 import { SavedService } from "./saved/saved.service";
 import { AuthService } from "./shared/auth.service";
 
-<<<<<<< HEAD
-const routes : Routes = [
-  { path: '', component: RecipesComponent }, 
-  { path: 'recipe/:id', component: RecipeDetailsComponent }, 
-  { path: 'saved', component: SavedComponent }, 
-  { path: 'saved/:id', component: SavedDetailsComponent},
-]; 
-=======
+// const routes : Routes = [
+//   { path: '', component: RecipesComponent }, 
+//   { path: 'recipe/:id', component: RecipeDetailsComponent }, 
+//   { path: 'saved', component: SavedComponent }, 
+//   { path: 'saved/:id', component: SavedDetailsComponent},
+// ]; 
 // Components
 import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
 import { UnauthorizedComponent } from "./unauthorized/unauthorized.component";
 import { NotFoundComponent } from "./notfound/notfound.component";
->>>>>>> Add recipe to list, register user, add new list, remove list, remove recipe from list, make sure you can´t add the same recipe twice
 
 export function jwtOptionsFactory() {
   return {
